@@ -1,5 +1,3 @@
-
-
 const express = require("express")
 const cors = require("cors")
 const dotenv = require("dotenv")
@@ -18,7 +16,8 @@ app.get("/",(req,res)=>{
 })
 
 app.post("/payment/create",async(req,res)=>{
-    const total = req.query.total
+    const total =parseInt(req.query.total)
+    console.log(total)
     if (total>0){
         const paymentIntent = await stripe.paymentIntents.create({
             amount:total,
